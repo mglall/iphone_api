@@ -9,10 +9,12 @@ database = client.TodoList
 collection = database.iphone
 
 
-
 async def fetch_one_iphone_by_model(model):
+    iphones = []
     cursor = collection.find({"model":model})
-    return cursor
+    async for document in cursor:
+        iphones.append(document)
+    return iphones
 
 
 async def fetch_one_iphone(model, capacity, colors):
