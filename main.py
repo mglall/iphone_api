@@ -41,7 +41,6 @@ async def get_todo():
 async def get_todo_by_model(model):
     response = await fetch_one_iphone_by_model(model)
     if response: 
-         
         return response
     raise HTTPException(404, f"there is no TODO item with this title{model}")
 
