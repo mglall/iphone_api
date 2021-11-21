@@ -14,7 +14,9 @@ async def fetch_one_iphone_by_model(model):
     iphones = []
     cursor = collection.find({"model":model})
     async for document in cursor:
-        iphones.append(Todo(**document))
+        key, value = list(document)[5]
+        if value not in iphones:
+            iphones.append(value)
     return iphones
 
 
